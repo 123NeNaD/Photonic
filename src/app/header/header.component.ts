@@ -17,8 +17,6 @@ export class HeaderComponent implements OnInit {
     this.userService.currentUser.subscribe(user => {
       this.user = user;
       this.username = this.user.username;
-      console.log("HEADER Novi user", this.user);
-      console.log("HEADER username", this.username);
     })
   }
 

@@ -12,8 +12,6 @@ import { Router } from '@angular/router';
 })
 export class UserService {
 
-  baseURL = "CAO";
-  user: any;
   subscription: Subscription;
   private subject = new BehaviorSubject('');
   currentUser = this.subject.asObservable();
@@ -25,27 +23,13 @@ export class UserService {
   }
 
   getAllUsers(): Observable<any> {
-    console.log("Saljem zahtev za podatke svih korisnika.")
-    const credentials = JSON.parse(localStorage.getItem("Cao"));
-    if (credentials && credentials.username !== undefined) {
-      return this.http.get(this.baseURL + 'users/')
-    }
-    else {
-      console.log("Korisnik nije ulogovan.")
-      return null;
-    }
+    const endpoint = 'https://jsonplaceholder.typicode.com/users';
+    return this.http.get(endpoint);
   }
 
   findUser(username): Observable<any> {
-    console.log("Saljem zahtev sa podatke korisnika." + username)
-    const credentials = JSON.parse(localStorage.getItem("CAO"));
-    if (credentials && credentials.username !== undefined) {
-      return this.http.get(this.baseURL + 'users/' + username)
-    }
-    else {
-      console.log("Korisnik nije ulogovan.")
-      return null;
-    }
+    const endpoint = 'https://jsonplaceholder.typicode.com/users?username=' + username;
+    return this.http.get(endpoint);
   }
 
   setLoggedUser(user: any) {
@@ -54,19 +38,6 @@ export class UserService {
 
   getLoggedUser(): Observable<any> {
     return this.subject;
-  }
-
-  getCurrentUser(): Observable<any> {
-    console.log("Saljem zahtev za podatke korisnika.");
-    const credentials = JSON.parse(localStorage.getItem("CAO"));
-    if (credentials && credentials.username !== undefined) {
-      console.log("Username je" + credentials.username);
-      return this.http.get(this.baseURL + 'users/' + credentials.username)
-    }
-    else {
-      console.log("Korisnik nije ulogovan.")
-      return null;
-    }
   }
 
   logIn(user: any): Observable<any> {
