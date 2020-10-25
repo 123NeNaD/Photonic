@@ -70,16 +70,10 @@ export class UserService {
   }
 
   logIn(user: any): Observable<any> {
-    return this.http.post(this.baseURL + 'users/login',
-      { 'username': user.username, 'password': user.password })
-      .pipe(map(res => {
-        if (res) {
-          return { 'success': true, 'username': user.username };
-        } else {
-          return { 'success': false, 'message': res };
-        }
-
-      }))
+    const username = user.username;
+    const email = user.password;
+    const endpoint = 'https://jsonplaceholder.typicode.com/users?username=' + username + '&email=' + email;
+    return this.http.get(endpoint);
   }
 
   logout() {

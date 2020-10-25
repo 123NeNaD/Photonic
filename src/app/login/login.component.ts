@@ -20,29 +20,12 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     console.log('User: ', this.user);
-    this.userService.logIn(this.user)
-      .subscribe(res => {
-        if (res.success) {
-          console.log(this.user)
-          this.userService.getCurrentUser()
-            .subscribe(user => {
-              console.log("Korisnik koji je stigao je:", user);
-              this.userService.setLoggedUser(user);
-              localStorage.setItem("currentUser", JSON.stringify(user));
-            },
-              error => {
-                console.log(error);
-                this.errMess = error;
-              });
-          this.router.navigate(['/gallery']);
-        } else {
-          this.errMess = res.message;
-        }
-      },
-        error => {
-          console.log(error);
-          this.errMess = "Invalid Credentials";
-        });
+    this.userService.logIn(this.user).subscribe(user => {
+      console.log("USER STIGAO:,", user);
+      this.userService.setLoggedUser(user[0]);
+      localStorage.setItem("currentUser", JSON.stringify(user[0]))
+      this.router.navigate(['/footer']);
+      }, error => {console.log("ERROR: ", error); this.errMess = "Invalid Credentials"; });
   }
 
 }
