@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'variables';
 @import '../node_modules/font-awesome/scss/font-awesome';
+@import '~bootstrap/scss/bootstrap';
 
 html, body {
     height: 100%;
@@ -49,3 +50,84 @@ body {
     }
 }
 
+
+
+
+$lt-gray: #ddd;
+// 1877f2
+// 512DA8
+$background-dark: #1877f2;
+$background-light: #9575CD;
+$background-pale: #D1C4E9;
+$primary-color-dark:   #512DA8;
+$primary-color:        #673AB7;
+$primary-color-light:  #D1C4E9;
+$primary-color-text:   #FFFFFF;
+$accent-color:         #FFC107;
+$primary-text-color:   #212121;
+$secondary-text-color: #757575;
+$divider-color:        #BDBDBD;
+
+@mixin zero-margin($pad-up-down, $pad-left-right) {
+    margin: 0px auto;
+    padding: $pad-up-down $pad-left-right;
+}
+
+html, body { height: 100%;}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  height: 100%;
+  background-image: "./assets/images/background.jpg";
+}
+
+.container {
+  margin: 20px;
+  display: flex;
+}
+
+.background-primary {
+  background-color: $background-dark!important;
+}
+
+.background-accent {
+  background-color: $accent-color!important;
+}
+
+.text-floral-white {
+  color: floralwhite!important;
+}
+
+.flex-spacer {
+flex: 1 1 auto;
+}
+
+.highlight {
+  background-color: $background-pale;
+  border: 1px solid $primary-color-dark;
+  z-index: 1;
+  transform: scale(1.01);
+}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+// Media Query
+// @include media-breakpoint-up(sm) { ... }
+// @include media-breakpoint-up(md) { ... }
+// @include media-breakpoint-up(lg) { ... }
+// @include media-breakpoint-up(xl) { ... }
+
+
+// @media (min-width: 576px) { ... }
+// Medium devices (tablets, 768px and up)
+// @media (min-width: 768px) { ... }
+// Large devices (desktops, 992px and up)
+// @media (min-width: 992px) { ... }
+// Extra large devices (large desktops, 1200px and up)
+// @media (min-width: 1200px) { ... }

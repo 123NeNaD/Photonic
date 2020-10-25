@@ -1,0 +1,52 @@
+:host {
+  display: grid;
+  /* vh = Viewport hight */
+  height: 93vh;
+  place-items: center;
+  background-size: cover;
+  background-image: url("/assets/images/Background.jpg");
+
+}
+
+
+
+.login{
+  background-color: white;
+  // min-height: 300px;
+  max-width: 600px;
+}
+
+.password{
+  @media (min-width: 768px) { padding-top: 10px; }
+}
+
+.username{
+  padding-top: 20px;
+  @media (min-width: 768px) { padding-top: 10px; }
+}
+
+.loginButton{
+  padding-left: 18px;
+  padding-right: 18px;
+  @media (min-width: 768px) { padding-left: 18px;}
+}
+
+.forgotPassword{
+  @media (min-width: 768px) { padding-left: 0px; padding-top: 10px;}
+}
+
+.createAccount{
+  padding-left: 18px;
+  padding-right: 18px;
+  @media (min-width: 768px) { padding-left: 18px; padding-top: 18px;}
+}
+
+.continueAsGuest{
+  @media (min-width: 768px) { padding-left: 0px; padding-top: 28px;}
+}
+
+.divider{
+  @media (min-width: 768px) { padding-top: 10px;}
+}
+
+
