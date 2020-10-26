@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlbumService } from '../services/album.service';
 
 @Component({
   selector: 'app-footer',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  allPhotos: any;
+
+  constructor(private albumService: AlbumService) { }
 
   ngOnInit(): void {
+    this.albumService.getAllPhotosFromAlbum(1).subscribe(photos=>{
+      this.allPhotos=photos;
+      console.log("SLIKE: ", this.allPhotos);
+    })
   }
 
 }

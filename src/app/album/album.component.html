@@ -13,18 +13,16 @@
   </div>
 </div>
 
-<div  *ngIf="option=='row'">
-  caocaocaocao
-  <cdk-virtual-scroll-viewport [itemSize]="18 * 7" class="example-viewport">
-    <div *cdkVirtualFor="let photo of allPhotos">
-      <div class="example-item-detail">Item: {{photo.title}}</div>
-    </div>
-  </cdk-virtual-scroll-viewport>
-  <!-- <cdk-virtual-scroll-viewport itemSize="250px" class="example-viewport">
+<div style="padding-top: 50px;" *ngIf="option=='row'">
+  <ul>
+    <cdk-virtual-scroll-viewport [itemSize]="200" class="viewport">
       <li *cdkVirtualFor="let photo of allPhotos">
-        CAOCAOCO
+        <img style="width: 150px; float:left" src="{{photo.thumbnailUrl}}">
+        <div style="position: relative; left:17px">Description: {{photo.title}}</div> <br>
+        <a mat-button style="font-size: 18px;"><span style="font-size: 26px; position: relative; bottom:3px;" class="fa fa-trash fa-lg"></span> Delete Photo</a>
       </li>
-  </cdk-virtual-scroll-viewport> -->
+    </cdk-virtual-scroll-viewport>
+  </ul>
 </div>
 
 
