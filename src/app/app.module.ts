@@ -36,7 +36,7 @@ import { AlbumService } from './services/album.service';
 import { FooterComponent } from './footer/footer.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { AlbumComponent } from './album/album.component';
-import { FullImageComponent } from './full-image/full-image.component';
+import { FullimageComponent } from './fullimage/fullimage.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +46,7 @@ import { FullImageComponent } from './full-image/full-image.component';
     FooterComponent,
     GalleryComponent,
     AlbumComponent,
-    FullImageComponent
+    FullimageComponent
   ],
   imports: [
     BrowserModule,

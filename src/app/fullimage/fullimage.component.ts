@@ -3,20 +3,20 @@ import { Params, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { switchMap } from 'rxjs/operators';
 import { AlbumService } from '../services/album.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-full-image',
-  templateUrl: './full-image.component.html',
-  styleUrls: ['./full-image.component.scss']
+  selector: 'app-fullimage',
+  templateUrl: './fullimage.component.html',
+  styleUrls: ['./fullimage.component.scss']
 })
-export class FullImageComponent implements OnInit {
+export class FullimageComponent implements OnInit {
 
   photo: any;
   prev: any;
   next: any;
 
-  constructor(private route: ActivatedRoute, private location: Location, private albumService: AlbumService) { }
-
+  constructor(private router: Router, private route: ActivatedRoute, private location: Location, private albumService: AlbumService) { }
   ngOnInit(): void {
     this.route.params.pipe(switchMap((params: Params) => { return this.albumService.getPhoto(params['id']); }))
     .subscribe(photo => {
@@ -26,7 +26,7 @@ export class FullImageComponent implements OnInit {
     error => {console.log("ERROR: ", error)});
   }
 
-  setPrevNext(photoId) {
+   setPrevNext(photoId) {
     if(photoId == 1){
       this.prev = 1;
       this.next = 2;
@@ -39,8 +39,8 @@ export class FullImageComponent implements OnInit {
     }
   }
 
-  goBack(): void {
-    this.location.back();
+  goBack(albumId): void {
+    this.router.navigate(['/album/'+ albumId])
   }
 
 }

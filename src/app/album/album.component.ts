@@ -5,6 +5,7 @@ import { Params, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { switchMap } from 'rxjs/operators';
 import { AlbumService } from '../services/album.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-album',
@@ -17,7 +18,7 @@ export class AlbumComponent implements OnInit {
   allPhotos: any;
   option: string = 'grid';
 
-  constructor(private route: ActivatedRoute, private albumService: AlbumService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private albumService: AlbumService) { }
 
   ngOnInit(): void {
     this.route.params.pipe(switchMap((params: Params) => {
@@ -37,6 +38,10 @@ export class AlbumComponent implements OnInit {
     if(view == 'row'){
       this.option = 'row';
     }
+  }
+
+  openFullSize(id){
+    this.router.navigate(['/fullImage/'+ id])
   }
 
 }

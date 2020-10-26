@@ -8,7 +8,7 @@
 
 <div *ngIf="option=='grid'" class="album">
   <div style="background: white;" *ngFor="let photo of allPhotos">
-    <img src="{{photo.thumbnailUrl}}">
+    <img src="{{photo.thumbnailUrl}}" (dblclick)="openFullSize(photo.id)">
     <span class="description">{{photo.title}}</span>
   </div>
 </div>

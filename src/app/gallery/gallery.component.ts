@@ -14,7 +14,7 @@ export class GalleryComponent implements OnInit {
   constructor(private router: Router, private albumService: AlbumService) { }
 
   ngOnInit(): void {
-    this.albumService.getAllAlbmums().subscribe(albums=>{
+    this.albumService.getAllAlbums().subscribe(albums=>{
       console.log("Albums: ", albums)
       this.albums = albums;
     }, error => {console.log("ERROR: ", error)})
