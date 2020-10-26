@@ -28,6 +28,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
@@ -37,6 +38,7 @@ import { FooterComponent } from './footer/footer.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { AlbumComponent } from './album/album.component';
 import { FullimageComponent } from './fullimage/fullimage.component';
+import { DialogComponent } from './dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,8 @@ import { FullimageComponent } from './fullimage/fullimage.component';
     FooterComponent,
     GalleryComponent,
     AlbumComponent,
-    FullimageComponent
+    FullimageComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -74,7 +77,8 @@ import { FullimageComponent } from './fullimage/fullimage.component';
     MatPaginatorModule,
     MatSelectModule,
     ScrollingModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatTooltipModule
   ],
   providers: [
     DatePipe,

@@ -31,6 +31,11 @@ export class AlbumService {
     return this.http.get(endpoint);
   }
 
+  deletePhoto(id): Observable<any> {
+    const endpoint = 'https://jsonplaceholder.typicode.com/photos?id=' + id;
+    return this.http.delete(endpoint);
+  }
+
   findAlbum(id): Observable<any> {
     const endpoint = 'https://jsonplaceholder.typicode.com/albums?id=' + id;
     return this.http.get(endpoint);

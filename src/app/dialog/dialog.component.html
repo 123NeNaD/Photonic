@@ -1,0 +1,14 @@
+<mat-toolbar style="background: #1877f2; color:floralwhite;">
+  Confirmation
+<span class="flex-spacer"></span>
+<button mat-button mat-dialog-close style="font-size: 20px;">&times;</button>
+</mat-toolbar>
+<mat-dialog-content style="text-align: center; margin-top: 20px;">
+  <p style="text-align: center;">Deleting the photo is permanent. Are you sure that you want to delete it?</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <span class="flex-spacer"></span>
+  <button mat-button mat-dialog-close style="background: lightgray;">Cancel</button>
+  <button (click)="deletePhoto()" mat-button class="text-floral-white" style="background: red;">Delete</button>
+</mat-dialog-actions>
+

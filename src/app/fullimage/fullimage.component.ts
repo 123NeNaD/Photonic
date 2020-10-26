@@ -4,6 +4,8 @@ import { Location } from '@angular/common';
 import { switchMap } from 'rxjs/operators';
 import { AlbumService } from '../services/album.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import {DialogComponent} from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-fullimage',
@@ -16,7 +18,7 @@ export class FullimageComponent implements OnInit {
   prev: any;
   next: any;
 
-  constructor(private router: Router, private route: ActivatedRoute, private location: Location, private albumService: AlbumService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private location: Location, private albumService: AlbumService, public dialog: MatDialog) { }
   ngOnInit(): void {
     this.route.params.pipe(switchMap((params: Params) => { return this.albumService.getPhoto(params['id']); }))
     .subscribe(photo => {
@@ -41,6 +43,14 @@ export class FullimageComponent implements OnInit {
 
   goBack(albumId): void {
     this.router.navigate(['/album/'+ albumId])
+  }
+
+  deletePhoto(photoId){
+    const loginRef = this.dialog.open(DialogComponent, {
+      width: '400px',
+      height: '250px',
+      data: {photoId: photoId}
+    })
   }
 
 }

@@ -1,13 +1,14 @@
 <div class="photo" *ngIf="photo">
   <mat-card>
     <img mat-card-image src="{{photo.url}}">
-    <mat-card-actions>
-      <button mat-button [routerLink]="['/fullImage', prev]"><span class="fa fa-chevron-left fa-lg"></span></button>
-      <button mat-button><span class="fa fa-heart fa-lg"></span></button>
-      <button mat-button (click)="goBack(photo.albumId)"><span class="fa fa-arrow-left fa-lg"></span></button>
-      <button mat-button><span class="fa fa-share-alt fa-lg"></span></button>
+    <mat-card-actions style="text-align: center;">
+      <button mat-button [routerLink]="['/fullImage', prev]" matTooltip="Previous Photo"><span class="fa fa-chevron-left fa-lg"></span></button>
+      <button mat-button matTooltip="Like Photo"><span class="fa fa-heart fa-lg"></span></button>
+      <button mat-button (click)="goBack(photo.albumId)" matTooltip="Go Back to Album"><span class="fa fa-arrow-left fa-lg"></span></button>
+      <button mat-button (click)="deletePhoto(photo.id)" matTooltip="Delete Photo"><span class="fa fa-trash fa-lg"></span></button>
+      <button mat-button matTooltip="Share Photo"><span class="fa fa-share-alt fa-lg"></span></button>
       <span class="flex-spacer"></span>
-      <button mat-button [routerLink]="['/fullImage', next]"><span class="fa fa-chevron-right fa-lg"></span></button>
+      <button mat-button [routerLink]="['/fullImage', next]" matTooltip="Next Photo"><span class="fa fa-chevron-right fa-lg"></span></button>
     </mat-card-actions>
   </mat-card>
 </div>
