@@ -21,8 +21,13 @@ export class AlbumService {
     }
   }
 
-  getAllAlbmums(): Observable<any> {
+  getAllAlbums(): Observable<any> {
     const endpoint = 'https://jsonplaceholder.typicode.com/albums';
+    return this.http.get(endpoint);
+  }
+
+  getPhoto(id): Observable<any> {
+    const endpoint = 'https://jsonplaceholder.typicode.com/photos?id=' + id;
     return this.http.get(endpoint);
   }
 
