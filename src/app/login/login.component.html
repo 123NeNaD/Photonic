@@ -22,17 +22,17 @@
         <mat-error *ngIf="password.errors?.required">Password is required</mat-error>
       </mat-form-field>
       <div class="col-12 col-md-3 loginButton">
-        <button mat-raised-button type="submit" class="background-primary text-floral-white" style="font-size:20px; width:100%" color="primary">Login</button>
+        <button mat-raised-button type="submit"  [disabled]="loginForm.form.invalid" class="background-primary text-floral-white" style="font-size:20px; width:100%" color="primary">Login</button>
       </div>
       <div class="col-12 col-md-9 forgotPassword">
-        <a style="font-size:13px;" href="/">Forgot your password?</a> &nbsp;
+        <a style="font-size:13px;" routerLink="#" routerLinkActive="active">Forgot your password?</a> &nbsp;
         <span *ngIf="errMess"style="color:red; font-size:20px;">({{errMess}})</span>
       </div>
       <div class="col-12 divider">
         <mat-divider style="width: 100%"></mat-divider>
       </div>
       <div class="col-12 col-md-6 createAccount">
-        <button mat-raised-button class="background-primary text-floral-white" style="font-size:20px; width:100%;" color="primary">Create a new account</button>
+        <a mat-raised-button class="background-primary text-floral-white" style="font-size:20px; width:100%;" color="primary">Create a new account</a>
       </div>
       <div class="col-12 col-md-6 continueAsGuest">
         <a style="font-size:13px;" routerLink="#" routerLinkActive="active">Continue as guest</a>
