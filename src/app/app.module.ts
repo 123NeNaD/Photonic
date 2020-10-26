@@ -39,6 +39,7 @@ import { GalleryComponent } from './gallery/gallery.component';
 import { AlbumComponent } from './album/album.component';
 import { FullimageComponent } from './fullimage/fullimage.component';
 import { DialogComponent } from './dialog/dialog.component';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import { DialogComponent } from './dialog/dialog.component';
   providers: [
     DatePipe,
     UserService,
-    AlbumService
+    AlbumService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

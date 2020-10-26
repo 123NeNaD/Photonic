@@ -32,6 +32,10 @@ export class UserService {
     return this.http.get(endpoint);
   }
 
+  isLoggedIn(){
+    return !!localStorage.getItem('currentUser');
+  }
+
   setLoggedUser(user: any) {
     this.subject.next(user);
   }
