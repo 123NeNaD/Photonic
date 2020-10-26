@@ -26,12 +26,15 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSelectModule } from '@angular/material/select'
 import { MatListModule } from '@angular/material/list';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 import { UserService } from './services/user.service';
+import { AlbumService } from './services/album.service';
 import { FooterComponent } from './footer/footer.component';
 import { GalleryComponent } from './gallery/gallery.component';
+import { AlbumComponent } from './album/album.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,8 @@ import { GalleryComponent } from './gallery/gallery.component';
     HeaderComponent,
     LoginComponent,
     FooterComponent,
-    GalleryComponent
+    GalleryComponent,
+    AlbumComponent
   ],
   imports: [
     BrowserModule,
@@ -65,11 +69,13 @@ import { GalleryComponent } from './gallery/gallery.component';
     MatAutocompleteModule,
     MatListModule,
     MatPaginatorModule,
-    MatSelectModule
+    MatSelectModule,
+    ScrollingModule
   ],
   providers: [
     DatePipe,
-    UserService
+    UserService,
+    AlbumService
   ],
   bootstrap: [AppComponent]
 })

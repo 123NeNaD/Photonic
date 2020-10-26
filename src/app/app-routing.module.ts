@@ -3,12 +3,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { FooterComponent } from './footer/footer.component';
 import { GalleryComponent } from './gallery/gallery.component';
+import { AlbumComponent } from './album/album.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'footer', component: FooterComponent },
   { path: 'gallery', component: GalleryComponent },
+  { path: 'album/:id',     component: AlbumComponent }
 ];
 
 @NgModule({

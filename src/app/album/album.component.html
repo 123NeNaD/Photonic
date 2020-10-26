@@ -1,0 +1,66 @@
+<mat-toolbar class="header">
+  <span style="font-size: 30px;">Photos</span>
+  <!-- Klasa flex-spacer je definisana u styles.scss i ona ce naredni element da pomeri maximalno desno koliko moze -->
+  <span class="flex-spacer"></span>
+  <a mat-button (click)="changeView('grid')" style="font-size: 30px; padding-right: 0px; cursor:pointer; color:white" class="fa fa-th fa-lg"></a>
+  <a mat-button (click)="changeView('row')" style="font-size: 33px; cursor:pointer; color:white" class="fa fa-bars fa-lg"></a>
+</mat-toolbar>
+
+<div *ngIf="option=='grid'" class="album">
+  <div style="background: white;" *ngFor="let photo of allPhotos">
+    <img src="{{photo.thumbnailUrl}}">
+    <span class="description">{{photo.title}}</span>
+  </div>
+</div>
+
+<div  *ngIf="option=='row'">
+  caocaocaocao
+  <cdk-virtual-scroll-viewport [itemSize]="18 * 7" class="example-viewport">
+    <div *cdkVirtualFor="let photo of allPhotos">
+      <div class="example-item-detail">Item: {{photo.title}}</div>
+    </div>
+  </cdk-virtual-scroll-viewport>
+  <!-- <cdk-virtual-scroll-viewport itemSize="250px" class="example-viewport">
+      <li *cdkVirtualFor="let photo of allPhotos">
+        CAOCAOCO
+      </li>
+  </cdk-virtual-scroll-viewport> -->
+</div>
+
+
+
+
+
+
+
+
+
+  <!-- <div class="photo" *ngFor="let photo of allPhotos" >
+    <img class="image" src="{{photo.thumbnailUrl}}">
+    <div class="description" style="color:white" style="border: solid red 4px">{{photo.title}}</div>
+  </div> -->
+  <!-- <mat-card *ngFor="let photo of allPhotos" class="card"  style="border: solid red 3px;">
+    <mat-card-content>
+      <img style="width: 100%;" mat-card-image src="{{photo.thumbnailUrl}}">
+      <p>{{photo.title}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
+  </mat-card> -->
+
+  <!-- <mat-card class="example-card"  *ngFor="let photo of allPhotos" style="border: solid red 3px">
+    <img mat-card-image src="{{photo.thumbnailUrl}}">
+      <span style="color:white">
+        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+        bred for hunting.
+      </span>
+    <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
+  </mat-card> -->
+
+
