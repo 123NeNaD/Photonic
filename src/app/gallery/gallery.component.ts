@@ -10,6 +10,7 @@ import { AlbumService } from '../services/album.service';
 export class GalleryComponent implements OnInit {
 
   albums: any;
+  option: string = 'grid';
 
   constructor(private router: Router, private albumService: AlbumService) { }
 
@@ -22,7 +23,16 @@ export class GalleryComponent implements OnInit {
 
   goToAlbum(id){
     console.log("Album ID: ", id);
-    this.router.navigate(['/album/'+ id])
+    this.router.navigate(['/gallery/album/'+ id])
+  }
+
+  changeView(view){
+    if(view == 'grid'){
+      this.option = 'grid';
+    }
+    if(view == 'row'){
+      this.option = 'row';
+    }
   }
 
 }

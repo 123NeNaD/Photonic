@@ -1,9 +1,13 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Routes, RouterModule } from '@angular/router';
+import { GalleryComponent } from './gallery/gallery.component';
+import { AlbumComponent } from './album/album.component';
+import { FullimageComponent } from './fullimage/fullimage.component';
+import { AuthGuard } from './auth.guard';
+
+
 import { MatSliderModule } from '@angular/material/slider';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -30,30 +34,22 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {MatTooltipModule} from '@angular/material/tooltip';
 
-import { HeaderComponent } from './header/header.component';
-import { LoginComponent } from './login/login.component';
-import { UserService } from './services/user.service';
-import { AlbumService } from './services/album.service';
-import { FooterComponent } from './footer/footer.component';
-import { DialogComponent } from './dialog/dialog.component';
-import { AuthGuard } from './auth.guard';
-import { HomeComponent } from './home/home.component';
-import { AboutusComponent } from './aboutus/aboutus.component';
+const routes: Routes = [
+  { path: '', component: GalleryComponent, canActivate: [AuthGuard]},
+  { path: 'fullImage/:id', component: FullimageComponent},
+  { path: 'album/:id', component: AlbumComponent},
+
+];
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
-    LoginComponent,
-    FooterComponent,
-    DialogComponent,
-    HomeComponent,
-    AboutusComponent
+    GalleryComponent,
+    FullimageComponent,
+    AlbumComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
+    CommonModule,
+    RouterModule.forChild(routes),
     MatSliderModule,
     MatInputModule,
     MatFormFieldModule,
@@ -80,11 +76,7 @@ import { AboutusComponent } from './aboutus/aboutus.component';
     MatTooltipModule
   ],
   providers: [
-    DatePipe,
-    UserService,
-    AlbumService,
     AuthGuard
   ],
-  bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class GalleryModule { }

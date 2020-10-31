@@ -40,7 +40,11 @@ export class AlbumComponent implements OnInit {
   }
 
   openFullSize(id){
-    this.router.navigate(['/fullImage/'+ id])
+    this.router.navigate(['/gallery/fullImage/'+ id])
+  }
+
+  goBack(){
+    this.router.navigate(['/gallery'])
   }
 
 }
