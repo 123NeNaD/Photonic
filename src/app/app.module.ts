@@ -40,6 +40,8 @@ import { AlbumComponent } from './album/album.component';
 import { FullimageComponent } from './fullimage/fullimage.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { AuthGuard } from './auth.guard';
+import { HomeComponent } from './home/home.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import { AuthGuard } from './auth.guard';
     GalleryComponent,
     AlbumComponent,
     FullimageComponent,
-    DialogComponent
+    DialogComponent,
+    HomeComponent,
+    AboutusComponent
   ],
   imports: [
     BrowserModule,

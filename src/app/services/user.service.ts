@@ -46,7 +46,7 @@ export class UserService {
 
   logIn(user: any): Observable<any> {
     const username = user.username;
-    const email = user.password;
+    const email = user.email;
     const endpoint = 'https://jsonplaceholder.typicode.com/users?username=' + username + '&email=' + email;
     return this.http.get(endpoint);
   }

@@ -1,11 +1,13 @@
 <mat-toolbar style="height: 7vh;" class="text-floral-white toolbar">
-  <a mat-button  style="background-color:#1877f2; font-size: 16px; display: contents;"><span
-    style="font-size: 26px;" class="fa fa-home fa-lg"></span> Home</a> &nbsp; &nbsp;  &nbsp;
-  <a mat-button routerLink="/gallery" style="background-color:#1877f2; font-size: 16px; display: contents;" routerLinkActive='active'
-    routerLinkActive='active'><span style="font-size: 26px;" class="fa fa-image fa-lg"></span> Gallery</a>  &nbsp;  &nbsp;  &nbsp;
-  <a mat-button style="background-color:#1877f2; font-size: 16px; display: contents;">
-    <span style="font-size: 26px;" class="fa fa-info fa-lg"></span> About Us</a>
-  <!-- Klasa flex-spacer je definisana u styles.scss i ona ce naredni element da pomeri maximalno desno koliko moze -->
+  <a mat-button  style="font-size: 16px;" routerLink="/home" routerLinkActive='active'>
+    <span style="font-size: 26px;" class="fa fa-home fa-lg"></span> Home
+  </a> &nbsp; &nbsp;  &nbsp;
+  <a mat-button style="font-size: 16px;" routerLink="/gallery" routerLinkActive='active'>
+    <span style="font-size: 26px;" class="fa fa-image fa-lg"></span> Gallery
+  </a>  &nbsp;  &nbsp;  &nbsp;
+  <a mat-button style="font-size: 16px;" routerLink="/aboutus" routerLinkActive='active'>
+    <span style="font-size: 26px;" class="fa fa-info fa-lg"></span> About Us
+  </a>
   <span class="flex-spacer"></span>
   <span *ngIf="username" style="font-size: 20px;">{{username}}</span>
   <a *ngIf="username" mat-button (click)="logOut()" style="font-size: 18px;"><span style="font-size: 26px;" class="fa fa-sign-out fa-lg"></span>Logout</a>

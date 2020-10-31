@@ -11,15 +11,11 @@
           name="username">
         <mat-error *ngIf="username.errors?.required">Username is required</mat-error>
       </mat-form-field>
-      <mat-form-field appearance="outline" class="col-12 col-md-6 password">
-        <mat-label>Enter your password</mat-label>
-        <input matInput #password="ngModel" required placeholder="Password" type="password"
-          [(ngModel)]="user.password" name="password" [type]="hide?'password':'text'">
-        <button mat-icon-button style="display: contents;" matSuffix (click)="hide = !hide"
-          [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </button>
-        <mat-error *ngIf="password.errors?.required">Password is required</mat-error>
+      <mat-form-field appearance="outline" class="col-12 col-md-6 email">
+        <mat-label>Enter your email</mat-label>
+        <input matInput #email="ngModel" required placeholder="Email" type="email"
+          [(ngModel)]="user.email" name="email">
+        <mat-error *ngIf="email.errors?.required">Email is required</mat-error>
       </mat-form-field>
       <div class="col-12 col-md-3 loginButton">
         <button mat-raised-button type="submit"  [disabled]="loginForm.form.invalid" class="background-primary text-floral-white" style="font-size:20px; width:100%" color="primary">Login</button>
