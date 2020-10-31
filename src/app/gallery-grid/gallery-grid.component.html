@@ -1,0 +1,17 @@
+
+<div class="header">
+  <mat-toolbar style="background-color: transparent;">
+    <span style="font-size: 30px; color:white">Albums:</span>
+    <!-- Klasa flex-spacer je definisana u styles.scss i ona ce naredni element da pomeri maximalno desno koliko moze -->
+    <span class="flex-spacer"></span>
+    <a mat-button (click)="changeView('grid')" style="font-size: 30px; padding-right: 0px; cursor:pointer; color:white" class="fa fa-th fa-lg"></a>
+    <a mat-button (click)="changeView('row')" style="font-size: 33px; cursor:pointer; color:white" class="fa fa-bars fa-lg"></a>
+  </mat-toolbar>
+</div>
+
+<div *ngIf="option=='grid'" class="gallery">
+  <a *ngFor="let album of albums" (click)="goToAlbum(album.id)">
+    {{ album.title }}
+  </a>
+</div>
+

@@ -7,11 +7,11 @@ import { AlbumService } from '../services/album.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-album',
-  templateUrl: './album.component.html',
-  styleUrls: ['./album.component.scss']
+  selector: 'app-album-grid',
+  templateUrl: './album-grid.component.html',
+  styleUrls: ['./album-grid.component.scss']
 })
-export class AlbumComponent implements OnInit {
+export class AlbumGridComponent implements OnInit {
 
   albumId: any;
   allPhotos: any;
@@ -32,10 +32,10 @@ export class AlbumComponent implements OnInit {
 
   changeView(view){
     if(view == 'grid'){
-      this.option = 'grid';
+      this.router.navigate(['/gallery/albumGrid/' +  this.albumId])
     }
     if(view == 'row'){
-      this.option = 'row';
+      this.router.navigate(['/gallery/albumRow/' +  this.albumId])
     }
   }
 
@@ -44,7 +44,7 @@ export class AlbumComponent implements OnInit {
   }
 
   goBack(){
-    this.router.navigate(['/gallery'])
+    this.router.navigate(['/gallery/galleryGrid'])
   }
 
 }

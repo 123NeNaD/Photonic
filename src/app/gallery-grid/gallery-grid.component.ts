@@ -3,14 +3,14 @@ import { Router } from '@angular/router';
 import { AlbumService } from '../services/album.service';
 
 @Component({
-  selector: 'app-gallery',
-  templateUrl: './gallery.component.html',
-  styleUrls: ['./gallery.component.scss']
+  selector: 'app-gallery-grid',
+  templateUrl: './gallery-grid.component.html',
+  styleUrls: ['./gallery-grid.component.scss']
 })
-export class GalleryComponent implements OnInit {
+export class GalleryGridComponent implements OnInit {
 
   albums: any;
-  option: string = 'grid';
+  option = 'grid';
 
   constructor(private router: Router, private albumService: AlbumService) { }
 
@@ -23,15 +23,15 @@ export class GalleryComponent implements OnInit {
 
   goToAlbum(id){
     console.log("Album ID: ", id);
-    this.router.navigate(['/gallery/album/'+ id])
+    this.router.navigate(['/gallery/albumGrid/'+ id])
   }
 
   changeView(view){
     if(view == 'grid'){
-      this.option = 'grid';
+      this.router.navigate(['/gallery/galleryGrid/'])
     }
     if(view == 'row'){
-      this.option = 'row';
+      this.router.navigate(['/gallery/galleryRow/'])
     }
   }
 

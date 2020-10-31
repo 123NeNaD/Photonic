@@ -42,7 +42,7 @@ export class FullimageComponent implements OnInit {
   }
 
   goBack(albumId): void {
-    this.router.navigate(['/gallery/album/'+ albumId])
+    this.router.navigate(['/gallery/albumGrid/'+ albumId])
   }
 
   deletePhoto(photoId){

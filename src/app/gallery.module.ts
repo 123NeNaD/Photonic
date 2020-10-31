@@ -2,9 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { Routes, RouterModule } from '@angular/router';
-import { GalleryComponent } from './gallery/gallery.component';
-import { AlbumComponent } from './album/album.component';
+import { GalleryGridComponent } from './gallery-grid/gallery-grid.component';
+import { AlbumGridComponent } from './album-grid/album-grid.component';
+import { AlbumRowComponent } from './album-row/album-row.component'
 import { FullimageComponent } from './fullimage/fullimage.component';
+import { GalleryRowComponent } from './gallery-row/gallery-row.component'
 import { AuthGuard } from './auth.guard';
 
 
@@ -24,28 +26,31 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
-import { DatePipe } from '@angular/common';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSelectModule } from '@angular/material/select'
 import { MatListModule } from '@angular/material/list';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import {ScrollingModule} from '@angular/cdk/scrolling';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 const routes: Routes = [
-  { path: '', component: GalleryComponent, canActivate: [AuthGuard]},
-  { path: 'fullImage/:id', component: FullimageComponent},
-  { path: 'album/:id', component: AlbumComponent},
-
+  { path: '', component: GalleryGridComponent, canActivate: [AuthGuard]},
+  { path: 'galleryGrid', component: GalleryGridComponent, canActivate: [AuthGuard]},
+  { path: 'galleryRow', component: GalleryRowComponent, canActivate: [AuthGuard]},
+  { path: 'albumGrid/:id', component: AlbumGridComponent, canActivate: [AuthGuard]},
+  { path: 'albumRow/:id', component: AlbumRowComponent, canActivate: [AuthGuard]},
+  { path: 'fullImage/:id', component: FullimageComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
   declarations: [
-    GalleryComponent,
+    GalleryGridComponent,
+    GalleryRowComponent,
     FullimageComponent,
-    AlbumComponent
+    AlbumGridComponent,
+    AlbumRowComponent
   ],
   imports: [
     CommonModule,
