@@ -4,7 +4,7 @@ import { AlbumService } from '../services/album.service';
 import { HttpClient } from '@angular/common/http';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 
-const batchSize = 31;
+const batchSize = 30;
 
 @Component({
   selector: 'app-gallery-row',
@@ -38,7 +38,7 @@ export class GalleryRowComponent implements OnInit {
   getInitialBatch(){
     const endpoint = 'https://jsonplaceholder.typicode.com/albums';
     const startId = 0;
-    const endId = startId + batchSize;
+    const endId = startId + batchSize + 1;
     this.http.get(endpoint).subscribe(allAlbums=>{
       if(Array.isArray(allAlbums)){
         var batchAlbums = allAlbums.filter((album)=> album.id>startId && album.id<endId);
@@ -57,7 +57,7 @@ export class GalleryRowComponent implements OnInit {
       const total = this.viewport.getDataLength();
       if(end === total){
         const startId = this.albums.length;
-        const endId = startId + batchSize;
+        const endId = startId + batchSize + 1;
         const endpoint = 'https://jsonplaceholder.typicode.com/albums';
         this.http.get(endpoint).subscribe(allAlbums=>{
           if(Array.isArray(allAlbums)){

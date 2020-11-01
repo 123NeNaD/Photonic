@@ -56,8 +56,6 @@ export class AlbumRowComponent implements OnInit {
         this.allPhotos = this.allPhotos.concat(batchPhotos);
         if(allPhotos.length<=endId) this.theEndOfList = true;
       }
-      console.log("ALL PHOTOS LENGTH: ", this.allPhotos.length)
-      console.log("ALL PHOTOS: ", this.allPhotos)
     }, error=>{console.log("ERROR: ", error)});
   }
 
@@ -68,8 +66,6 @@ export class AlbumRowComponent implements OnInit {
       }
       const end = this.viewport.getRenderedRange().end;
       const total = this.viewport.getDataLength();
-      console.log("CURRENT: ", end);
-      console.log("TOTAL: ", total);
       if(end === total){
         const endpoint = 'https://jsonplaceholder.typicode.com/photos?albumId=' + this.albumId;
         const startId = this.allPhotos.length;
@@ -80,8 +76,6 @@ export class AlbumRowComponent implements OnInit {
             this.allPhotos = this.allPhotos.concat(batchPhotos);
             if(allPhotos.length<=endId) this.theEndOfList = true;
           }
-          console.log("ALL PHOTOS LENGTH: ", this.allPhotos.length)
-          console.log("ALL PHOTOS: ", this.allPhotos)
         }, error=>{console.log("ERROR: ", error)});
       }
     }
