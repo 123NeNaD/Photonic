@@ -65,8 +65,8 @@
 .viewport {
   display: grid;
   padding-right: 50px;
-  grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
-  grid-auto-rows: 200px;
+  grid-template-columns: repeat(auto-fill, minmax(55px, 1fr));
+  grid-auto-rows: 55px;
   min-height: 500px;
   width: 100%;
   background: transparent;

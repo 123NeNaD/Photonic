@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlbumService } from '../services/album.service';
+import { HttpClient } from '@angular/common/http';
+import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
+
+const batchSize = 31;
 
 @Component({
   selector: 'app-gallery-row',
@@ -9,16 +13,15 @@ import { AlbumService } from '../services/album.service';
 })
 export class GalleryRowComponent implements OnInit {
 
-  albums: any;
+  albums = [];
   option = 'row';
+  @ViewChild(CdkVirtualScrollViewport) viewport: CdkVirtualScrollViewport;
+  theEndOfList = false;
 
-  constructor(private router: Router, private albumService: AlbumService) { }
+  constructor(private router: Router, private albumService: AlbumService, private http: HttpClient,) { }
 
   ngOnInit(): void {
-    this.albumService.getAllAlbums().subscribe(albums=>{
-      console.log("Albums: ", albums)
-      this.albums = albums;
-    }, error => {console.log("ERROR: ", error)})
+    this.getInitialBatch();
   }
 
   goToAlbum(id){
@@ -29,6 +32,49 @@ export class GalleryRowComponent implements OnInit {
   changeView(view){
     if(view == 'grid'){
       this.router.navigate(['/gallery/galleryGrid/'])
+    }
+  }
+
+  getInitialBatch(){
+    const endpoint = 'https://jsonplaceholder.typicode.com/albums';
+    const startId = 0;
+    const endId = startId + batchSize;
+    this.http.get(endpoint).subscribe(allAlbums=>{
+      if(Array.isArray(allAlbums)){
+        var batchAlbums = allAlbums.filter((album)=> album.id>startId && album.id<endId);
+        this.albums = this.albums.concat(batchAlbums);
+        console.log("BATCH ALBUMS:", batchAlbums);
+        console.log("ALBUMS LENGTH:", this.albums.length)
+        console.log("ALBUMS:", this.albums)
+        if(allAlbums.length<=endId) this.theEndOfList = true;
+      }
+    }, error=>{console.log("ERROR: ", error)});
+  }
+
+  getNextBatch(event){
+    if(this.albums.length != 0){
+      if(this.theEndOfList){
+        return
+      }
+      const end = this.viewport.getRenderedRange().end;
+      const total = this.viewport.getDataLength();
+      console.log("CURRENT: ", end);
+      console.log("TOTAL", total)
+      if(end === total){
+        const startId = this.albums.length;
+        const endId = startId + batchSize;
+        const endpoint = 'https://jsonplaceholder.typicode.com/albums';
+        this.http.get(endpoint).subscribe(allAlbums=>{
+          if(Array.isArray(allAlbums)){
+            var batchAlbums = allAlbums.filter((album)=> album.id>startId && album.id<endId);
+            console.log("BATCH ALBUMS:", batchAlbums);
+            this.albums = this.albums.concat(batchAlbums);
+            console.log("ALBUMS LENGTH:", this.albums.length)
+            console.log("ALBUMS", this.albums)
+            if(allAlbums.length<=endId) this.theEndOfList = true;
+          }
+        }, error=>{console.log("ERROR: ", error)});
+      }
     }
   }
 

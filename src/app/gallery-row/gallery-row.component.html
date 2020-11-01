@@ -8,9 +8,9 @@
   </mat-toolbar>
 </div>
 <div *ngIf="option=='row'" class="gallery">
-  <cdk-virtual-scroll-viewport [itemSize]="50" class="viewport">
+  <cdk-virtual-scroll-viewport [itemSize]="50" class="viewport" (scrolledIndexChange)="getNextBatch($event)">
     <ul style="list-style-type: none;">
-      <li *cdkVirtualFor="let album of albums" class="animate__animated animate__backInRight">
+      <li *cdkVirtualFor="let album of albums; let i = index" class="animate__animated animate__backInRight">
         <a (click)="goToAlbum(album.id)">{{ album.title }}</a>
       </li>
     </ul>
