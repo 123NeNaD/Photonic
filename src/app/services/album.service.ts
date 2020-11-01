@@ -50,7 +50,7 @@ export class AlbumService {
     this.subject.next(album);
   }
 
-  getCurentUser(): Observable<any> {
+  getCurentAlbum(): Observable<any> {
     return this.subject;
   }
 

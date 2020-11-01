@@ -14,7 +14,7 @@
 <div *ngIf="option=='row'" class="album">
   <cdk-virtual-scroll-viewport [itemSize]="200" class="viewport">
     <ul style="list-style-type: none;">
-      <li *cdkVirtualFor="let photo of allPhotos">
+      <li *cdkVirtualFor="let photo of allPhotos" class="animate__animated animate__backInRight">
         <img style="width: 150px; float:left" (dblclick)="openFullSize(photo.id)" src="{{photo.thumbnailUrl}}">
         <div style="position: relative; left:17px">Description: {{photo.title}}</div> <br>
       </li>
