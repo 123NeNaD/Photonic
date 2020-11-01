@@ -18,7 +18,7 @@ export class GalleryRowComponent implements OnInit {
   @ViewChild(CdkVirtualScrollViewport) viewport: CdkVirtualScrollViewport;
   theEndOfList = false;
 
-  constructor(private router: Router, private albumService: AlbumService, private http: HttpClient,) { }
+  constructor(private router: Router, private albumService: AlbumService, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.getInitialBatch();
@@ -43,9 +43,6 @@ export class GalleryRowComponent implements OnInit {
       if(Array.isArray(allAlbums)){
         var batchAlbums = allAlbums.filter((album)=> album.id>startId && album.id<endId);
         this.albums = this.albums.concat(batchAlbums);
-        console.log("BATCH ALBUMS:", batchAlbums);
-        console.log("ALBUMS LENGTH:", this.albums.length)
-        console.log("ALBUMS:", this.albums)
         if(allAlbums.length<=endId) this.theEndOfList = true;
       }
     }, error=>{console.log("ERROR: ", error)});
@@ -58,8 +55,6 @@ export class GalleryRowComponent implements OnInit {
       }
       const end = this.viewport.getRenderedRange().end;
       const total = this.viewport.getDataLength();
-      console.log("CURRENT: ", end);
-      console.log("TOTAL", total)
       if(end === total){
         const startId = this.albums.length;
         const endId = startId + batchSize;
@@ -67,10 +62,7 @@ export class GalleryRowComponent implements OnInit {
         this.http.get(endpoint).subscribe(allAlbums=>{
           if(Array.isArray(allAlbums)){
             var batchAlbums = allAlbums.filter((album)=> album.id>startId && album.id<endId);
-            console.log("BATCH ALBUMS:", batchAlbums);
             this.albums = this.albums.concat(batchAlbums);
-            console.log("ALBUMS LENGTH:", this.albums.length)
-            console.log("ALBUMS", this.albums)
             if(allAlbums.length<=endId) this.theEndOfList = true;
           }
         }, error=>{console.log("ERROR: ", error)});
