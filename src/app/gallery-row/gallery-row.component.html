@@ -5,13 +5,21 @@
     <!-- Klasa flex-spacer je definisana u styles.scss i ona ce naredni element da pomeri maximalno desno koliko moze -->
     <span class="flex-spacer"></span>
     <a mat-button (click)="changeView('grid')" style="font-size: 30px; padding-right: 0px; cursor:pointer; color:white" class="fa fa-th fa-lg"></a>
-    <a mat-button (click)="changeView('row')" style="font-size: 33px; cursor:pointer; color:white" class="fa fa-bars fa-lg"></a>
+    <a mat-button style="font-size: 33px; cursor:pointer; color:white" class="fa fa-bars fa-lg"></a>
   </mat-toolbar>
 </div>
 
 <div *ngIf="option=='row'" class="gallery">
-  <a *ngFor="let album of albums" (click)="goToAlbum(album.id)">
-    {{ album.title }}
-  </a>
+  <cdk-virtual-scroll-viewport [itemSize]="50" class="viewport">
+    <ul style="list-style-type: none;">
+      <li *cdkVirtualFor="let album of albums">
+        <a (click)="goToAlbum(album.id)">{{ album.title }}</a>
+      </li>
+    </ul>
+  </cdk-virtual-scroll-viewport>
 </div>
 
+
+ <!-- <a *ngFor="let album of albums" (click)="goToAlbum(album.id)">
+    {{ album.title }}
+  </a> -->

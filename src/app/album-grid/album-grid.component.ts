@@ -31,9 +31,6 @@ export class AlbumGridComponent implements OnInit {
   }
 
   changeView(view){
-    if(view == 'grid'){
-      this.router.navigate(['/gallery/albumGrid/' +  this.albumId])
-    }
     if(view == 'row'){
       this.router.navigate(['/gallery/albumRow/' +  this.albumId])
     }

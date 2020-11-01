@@ -27,9 +27,6 @@ export class GalleryGridComponent implements OnInit {
   }
 
   changeView(view){
-    if(view == 'grid'){
-      this.router.navigate(['/gallery/galleryGrid/'])
-    }
     if(view == 'row'){
       this.router.navigate(['/gallery/galleryRow/'])
     }

@@ -23,15 +23,12 @@ export class GalleryRowComponent implements OnInit {
 
   goToAlbum(id){
     console.log("Album ID: ", id);
-    this.router.navigate(['/galleryGrid/album/'+ id])
+    this.router.navigate(['/gallery/albumGrid/'+ id])
   }
 
   changeView(view){
     if(view == 'grid'){
       this.router.navigate(['/gallery/galleryGrid/'])
-    }
-    if(view == 'row'){
-      this.router.navigate(['/gallery/galleryRow/'])
     }
   }
 

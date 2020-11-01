@@ -7,18 +7,11 @@
     <!-- Klasa flex-spacer je definisana u styles.scss i ona ce naredni element da pomeri maximalno desno koliko moze -->
     <span class="flex-spacer"></span>
     <a mat-button (click)="changeView('grid')" style="font-size: 30px; padding-right: 0px; cursor:pointer; color:white" class="fa fa-th fa-lg"></a>
-    <a mat-button (click)="changeView('row')" style="font-size: 33px; cursor:pointer; color:white" class="fa fa-bars fa-lg"></a>
+    <a mat-button style="font-size: 33px; cursor:pointer; color:white" class="fa fa-bars fa-lg"></a>
   </mat-toolbar>
 </div>
 
-<div *ngIf="option=='grid'" class="album">
-    <div style="background: white;" *ngFor="let photo of allPhotos">
-      <img src="{{photo.thumbnailUrl}}" (dblclick)="openFullSize(photo.id)">
-      <span class="description">{{photo.title}}</span>
-    </div>
-</div>
-
-<div *ngIf="option=='row'">
+<div *ngIf="option=='row'" class="album">
   <cdk-virtual-scroll-viewport [itemSize]="200" class="viewport">
     <ul style="list-style-type: none;">
       <li *cdkVirtualFor="let photo of allPhotos">

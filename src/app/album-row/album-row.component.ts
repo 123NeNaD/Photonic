@@ -34,9 +34,6 @@ export class AlbumRowComponent implements OnInit {
     if(view == 'grid'){
       this.router.navigate(['/gallery/albumGrid/' +  this.albumId])
     }
-    if(view == 'row'){
-      this.router.navigate(['/gallery/albumRow/' +  this.albumId])
-    }
   }
 
   openFullSize(id){
